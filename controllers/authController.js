@@ -42,9 +42,9 @@ module.exports.signup_post = async (req, res) => {
     res.cookie('jwt', token, { httpOnly: true, maxAge: MAX_AGE_IN_SECONDS * 1000 });
     res.status(201).json({ user: user._id });
   }
-  catch (error) {
-    const errors = handleErrors(error);
-    res.status(400).json(errors);
+  catch (err) {
+    const errors = handleErrors(err);
+    res.status(400).json({ errors });
   }
 }
 module.exports.login_post = async (req, res) => {
